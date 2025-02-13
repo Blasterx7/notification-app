@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'services/socket_service.dart';  
+import 'services/socket_service.dart';
 
 void main() {
   runApp(ChatApp());
@@ -59,6 +59,7 @@ class _ChatAppState extends State<ChatApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: Text("Chat Éphémère")),
         body: Column(
@@ -71,7 +72,8 @@ class _ChatAppState extends State<ChatApp> {
                 },
               ),
             ),
-            Padding(
+            Container(
+              margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [

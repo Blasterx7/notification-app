@@ -5,7 +5,7 @@ class SocketService {
   late IO.Socket socket;
 
   void connect(String userId) {
-    socket = IO.io('http://localhost:3000', <String, dynamic>{
+    socket = IO.io("https://notification-app-fdpi.onrender.com", <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
     });
