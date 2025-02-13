@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test WebSocket</title>
+</head>
+<body>
+    <h1>Test Notifications WebSockets</h1>
+    <button onclick="registerUser()">S'enregistrer</button>
+    <button onclick="sendNotification()">Envoyer Notification</button>
+    
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://localhost:3000');
+
+        function registerUser() {
+            socket.emit('register', { userId: 'user123' });
+            console.log("Utilisateur enregistré !");
+        }
+
+        function sendNotification() {
+            socket.emit('send-notification', { userId: 'user123', title: 'Hello', message: 'Ceci est une notification !' });
+        }
+
+        socket.on('notification', (data) => {
+            alert(`Notification reçue : ${data.title} - ${data.message}`);
+        });
+    </script>
+</body>
+</html>
